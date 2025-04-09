@@ -1,7 +1,6 @@
 public class Board {
 
 
-
     private int length;
     private int width;
     private int[][] board;
@@ -35,11 +34,17 @@ public class Board {
         }
     }
 
+    public void setCellDead(int x, int y) {
+        if (x >= 0 && x < width && y >= 0 && y < length) {
+            this.board[x][y] = 0;
+        }
+    }
+
     public int getCellState(int x, int y) {
         if (x >= 0 && x < width && y >= 0 && y < length) {
             return this.board[x][y];
         }
-        return 0; // Default state if coordinates are out of bounds
+        return 0;
     }
 
     public void updateState(int[][] newBoardState) {

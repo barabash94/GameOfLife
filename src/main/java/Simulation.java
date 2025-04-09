@@ -1,6 +1,7 @@
 
 
 public class Simulation {
+
     Board board;
 
     public Simulation(Board board) {
@@ -31,6 +32,15 @@ public class Simulation {
         return count;
     }
 
+    public void moveCell(int currentX, int currentY, int newX, int newY) {
+        if (newX >= 0 && newX < board.getWidth() && newY >= 0 && newY < board.getLength()) {
+            if (board.getCellState(currentX, currentY) == 1) {
+                board.setCellDead(currentX, currentY);
+                board.setCellAlive(newX, newY);
+            }
+        }
+    }
+
     public void step() {
         int width = board.getWidth();
         int length = board.getLength();
@@ -54,7 +64,5 @@ public class Simulation {
         board.updateState(newBoard);
     }
 }
-
-
 
 
